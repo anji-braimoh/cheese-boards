@@ -5,6 +5,11 @@ async function seed () {
 
     // drops and creates table in db
     await db.sync ({force : true})
+
 }
+
+
+
+
 
 seed()
