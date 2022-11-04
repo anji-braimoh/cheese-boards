@@ -9,6 +9,9 @@ async function seed () {
 
     const user1 = await User.create({name: "user1",
         email: "user1@multiverse.org"})
+    const user2 = await User.create({name: "user2",
+        email: "user2@multiverse.org"})
+
     const boarduser1 = await Board.bulkCreate([
         {type:'French Board',
         description:"A collection of French cheeses",
@@ -26,12 +29,17 @@ async function seed () {
     {title: 'Comte',
     description:"It is a semi-hard cheese, pale yellow in color, with a texture that ranges from open, supple, and grainy for younger cheeses to dense, firm, and crystalline for more aged cheeses. When aged, its flavor is nutty, smoky, fruity and sweet, while the younger cheeses are more milky and fresh tasting"},
     {title: 'Mozzarella',
-    description:"IMozzarella is a plastic or stretched-curd cheese; the curd is mixed with heated whey and stretched and kneaded until it attains a smooth, pliable consistency. It is then molded into spheres or ovals and stored in water to keep it moist."},
+    description:"Mozzarella is a plastic or stretched-curd cheese; the curd is mixed with heated whey and stretched and kneaded until it attains a smooth, pliable consistency. It is then molded into spheres or ovals and stored in water to keep it moist."},
     
     ])
 
+    await user1.addBoard(boarduser1)
 
 
+    await cheeses[0].addBoard(boarduser1[1])
+    await cheeses[1].addBoard(boarduser1[0])
+    await cheeses[2].addBoard(boarduser1[0])
+    await cheeses[3].addBoard(boarduser1[1])
 }
 
 
